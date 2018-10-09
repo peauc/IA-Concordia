@@ -39,6 +39,18 @@ MOVES: list = [
     MOVE_UP_LEFT_INDEX_SHIFT
 ]
 
+# Associates a string to each move describing it, for debugging purpose.
+MOVES_STRING_REPRESENTATION_MAP: map = {
+    MOVE_UP_INDEX_SHIFT: "UP",
+    MOVE_UP_RIGHT_INDEX_SHIFT: "UP_RIGHT",
+    MOVE_RIGHT_INDEX_SHIFT: "RIGHT",
+    MOVE_DOWN_RIGHT_INDEX_SHIFT: "DOWN_RIGHT",
+    MOVE_DOWN_INDEX_SHIFT: "DOWN",
+    MOVE_DOWN_LEFT_INDEX_SHIFT: "DOWN_LEFT",
+    MOVE_LEFT_INDEX_SHIFT: "LEFT",
+    MOVE_UP_LEFT_INDEX_SHIFT: "UP_LEFT"
+}
+
 # The goal state our algorithm is trying to reach.
 GOAL_STATE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
 
@@ -48,6 +60,8 @@ GOAL_STATE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
 # =========
 
 def is_goal(state: list) -> bool:
+    """True if the given board is equal to the goal state, false otherwise."""
+
     return state == GOAL_STATE
 
 
@@ -60,9 +74,10 @@ def get_children_nodes(node: Node, closed_list: list, open_list: list) -> list:
     for move in MOVES:
         child: Node = create_child(node, move)
 
-        if child in closed_list and child not in open_list and child is not None:
+        if child is not None:
             possible_moves.append(child)
 
+    print("index is:", node.empty_tile_index)
     print("possible moves:", list(map(lambda x: x.__str__(), possible_moves)), "\n")
     return possible_moves
 
@@ -70,7 +85,7 @@ def get_children_nodes(node: Node, closed_list: list, open_list: list) -> list:
 def can_make_move(position: int, index_shift: int) -> bool:
     """True if the targeted index is in the array bounds."""
 
-    return SIZE > position + index_shift > 0
+    return SIZE > position + index_shift >= 0
 
 
 def create_child(state: Node, move: int) -> Node:
@@ -79,9 +94,11 @@ def create_child(state: Node, move: int) -> Node:
     if not can_make_move(state.empty_tile_index, move):
         return None
 
+    print("create child for move:", MOVES_STRING_REPRESENTATION_MAP[move])
     next_index = state.empty_tile_index + move
-    state_map = state.state_map
+    print("index:", state.empty_tile_index, " next_index:", next_index)
+    state_map = state.state_map[:]
     state_map[state.empty_tile_index], state_map[next_index] = state_map[next_index], state_map[state.empty_tile_index]
 
-    print("position: ", next_index)
-    return Node(state_map[:], next_index, move, state)
+    # print("position: ", next_index)
+    return Node(state_map, next_index, move, state)

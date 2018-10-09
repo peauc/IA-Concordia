@@ -4,8 +4,8 @@ from src.Heuristic.IHeuristics import IHeuristics
 
 
 def _mapSetup() -> list:
-    board = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    random.shuffle(board)
+    board = [1, 0, 3, 7, 5, 2, 6, 4, 9, 10, 11, 8]
+    #random.shuffle(board)
     return board
 
 
