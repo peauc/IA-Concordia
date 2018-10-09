@@ -6,7 +6,7 @@ This file will contain the different functions and constants to interact with th
 
 # Import statements
 
-from node import Node
+from src.node import Node
 
 # =========
 # CONSTANTS
@@ -39,10 +39,17 @@ MOVES: list = [
     MOVE_UP_LEFT_INDEX_SHIFT
 ]
 
+# The goal state our algorithm is trying to reach.
+GOAL_STATE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+
 
 # =========
 # FUNCTIONS
 # =========
+
+def is_goal(state: list) -> bool:
+    return state == GOAL_STATE
+
 
 def get_children_nodes(node: Node, closed_list: list, open_list: list) -> list:
     """Returns a list of the children nodes of the given node, in order of preference."""
