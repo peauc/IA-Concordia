@@ -1,6 +1,7 @@
 import src.core as core
 import random
 from src.Algorithm.DepthFirst import DepthFirst
+from src.Algorithm.BreadthFirst import BreadthFirst
 from src.Heuristic.NoHeuristic import NoHeuristic
 
 map_array = [1, 0, 3, 7, 5, 2, 6, 4, 9, 10, 11, 8]
@@ -12,9 +13,16 @@ def _mapSetup() -> list:
     return board
 
 
-def init_bf():
+def init_dfs():
     board = _mapSetup()
     algo = DepthFirst(board)
+    heuristic = NoHeuristic()
+    core.loop(algo, heuristic, board)
+
+
+def init_bf():
+    board = _mapSetup()
+    algo = BreadthFirst(board)
     heuristic = NoHeuristic()
     core.loop(algo, heuristic, board)
 
