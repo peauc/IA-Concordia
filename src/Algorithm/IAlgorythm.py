@@ -1,11 +1,13 @@
 import abc
 from src.node import Node
+import src.moves as moves
 
 class IAlgorythm:
+    _current_node: Node
     __is_resolved = False
 
     def is_resolved(self) -> bool:
-        return self.__is_resolved
+        return type(self._current_node) is Node and self._current_node.state_map.__eq__(moves.GOAL_STATE)
 
     """ this method takes a board and its heuristic and compute the best move, then return the actual map state"""
     @abc.abstractmethod

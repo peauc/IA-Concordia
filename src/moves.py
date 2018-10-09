@@ -77,8 +77,8 @@ def get_children_nodes(node: Node, closed_list: list, open_list: list) -> list:
         if child is not None:
             possible_moves.append(child)
 
-    print("index is:", node.empty_tile_index)
-    print("possible moves:", list(map(lambda x: x.__str__(), possible_moves)), "\n")
+    # print("index is:", node.empty_tile_index)
+    # print("possible moves:", list(map(lambda x: x.__str__(), possible_moves)), "\n")
     return possible_moves
 
 
@@ -94,9 +94,9 @@ def create_child(state: Node, move: int) -> Node:
     if not can_make_move(state.empty_tile_index, move):
         return None
 
-    print("create child for move:", MOVES_STRING_REPRESENTATION_MAP[move])
+    # print("create child for move:", MOVES_STRING_REPRESENTATION_MAP[move])
     next_index = state.empty_tile_index + move
-    print("index:", state.empty_tile_index, " next_index:", next_index)
+    # print("index:", state.empty_tile_index, " next_index:", next_index)
     state_map = state.state_map[:]
     state_map[state.empty_tile_index], state_map[next_index] = state_map[next_index], state_map[state.empty_tile_index]
 
