@@ -1,5 +1,5 @@
 import abc
-
+from src.node import Node
 
 class IAlgorythm:
     __is_resolved = False
@@ -12,4 +12,7 @@ class IAlgorythm:
     def compute(self, board, heuristics) -> list:
         pass
 
-
+    def __init__(self, initial_board_state : list):
+        self._current_node = Node(initial_board_state, initial_board_state.index(0), None, None)
+        self._open_list = []
+        self._closed_list = []

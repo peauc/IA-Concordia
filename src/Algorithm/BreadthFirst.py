@@ -20,5 +20,6 @@ class BreathFirst(IAlgorythm):
             print("current_node: ", current_node, "\n")
             input()
 
-    def __init__(self):
+    def __init__(self, initial_board_state: list):
+        super(BreathFirst, self).__init__(initial_board_state)
         pass
