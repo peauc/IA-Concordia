@@ -4,14 +4,14 @@ from src.moves import is_goal
 from src.node import Node
 
 
-class BreathFirst(IAlgorythm):
+class DepthFirst(IAlgorythm):
 
     def compute(self, board, heuristics) -> list:
-
+        self._current_node = self._open_list.pop(0)
         self._closed_list.append(self._current_node)
+
         next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)
-        open_list = next_moves + self._open_list
-        current_node = open_list.pop(0)
+        self._open_list = next_moves + self._open_list
         self.__str__()
         input()
 
@@ -21,5 +21,5 @@ class BreathFirst(IAlgorythm):
         print("current_node: ", self._current_node, "\n")
 
     def __init__(self, initial_board_state: list):
-        super(BreathFirst, self).__init__(initial_board_state)
+        super(DepthFirst, self).__init__(initial_board_state)
         pass
