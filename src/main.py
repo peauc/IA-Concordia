@@ -1,34 +1,23 @@
 import src.core as core
 from src.Algorithm.BreadthFirst import BreathFirst
 from src.Heuristic.NoHeuristic import NoHeuristic
-from src.Algorithm.IAlgorythm import IAlgorythm
+from src.moves import get_children_nodes
+from src.node import Node
 
-from moves import get_children_nodes
-from node import Node
+map_array = [1, 0, 3, 7, 5, 2, 6, 4, 9, 10, 11, 8]
+goal_state = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
+
 
 def init_bf():
     algo = BreathFirst()
     heuristic = NoHeuristic()
     core.loop(algo, heuristic)
-map_array = [1, 0, 3, 7, 5, 2, 6, 4, 9, 10, 11, 8]
-goal_state = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0]
 
-
-map_array = move_right(map_array, 1)
-print("moved right", map_array)
-map_array = move_down(map_array, 2)
-print("moved down ", map_array)
-map_array = move_up(map_array, 6)
-print("moved up   ", map_array)
-map_array = move_left(map_array, 2)
-print("moved left ", map_array)
 
 def is_goal(state: Node):
     """True if the given state is the goal state"""
     return state.state_map == goal_state
 
-if __name__ == "__main__":
-    main()
 
 def depth_first_search(initial_state: list):
     """Performs a depth first search algorithm from the given state"""
@@ -52,4 +41,5 @@ def __main__() -> int:
     return 0
 
 
-__main__()
+if __name__ == "__main__":
+    __main__()
