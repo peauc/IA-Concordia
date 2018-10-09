@@ -14,5 +14,6 @@ def loop(algo: IAlgorythm, heuristic: IHeuristics):
     while not algo.is_resolved():
         current_heuristic = heuristic.compute(board_state)
         board_state = algo.compute(board_state, current_heuristic)
+        """ Todo: Write to a file """
         print("New computing action from the algorithm")
     pass
