@@ -1,6 +1,6 @@
 import random
-import src.Algorithm.IAlgorythm
-import src.Heuristic.IHeuristics
+from src.Algorithm.IAlgorythm  import IAlgorythm
+from src.Heuristic.IHeuristics import IHeuristics
 
 
 def _mapSetup() -> list:
@@ -9,8 +9,10 @@ def _mapSetup() -> list:
     return board
 
 
-def loop(algo, heuristic):
-    board = _mapSetup()
+def loop(algo: IAlgorythm, heuristic: IHeuristics):
+    board_state = _mapSetup()
     while not algo.is_resolved():
+        current_heuristic = heuristic.compute(board_state)
+        board_state = algo.compute(board_state, current_heuristic)
         print("New computing action from the algorithm")
     pass
