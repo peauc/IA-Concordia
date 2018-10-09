@@ -15,7 +15,7 @@ class IAlgorythm:
         self._closed_list = {}
         self._heuristic = heuristic
 
-    """ this method takes a board and its heuristic and compute the best move, then return the actual map state"""
+    """this method takes a board and its heuristic and compute the best move, then return the actual map state"""
     @abc.abstractmethod
     def compute(self):
         pass

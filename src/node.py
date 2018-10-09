@@ -33,7 +33,8 @@ class Node:
             self.depth = parent.depth + 1
 
     def __str__(self) -> str:
-        return self.__empty_tile_name + " [" + ", ".join(str(e) for e in self.state_map) + "]"
+        # return self.__empty_tile_name + " [" + ", ".join(str(e) for e in self.state_map) + "]"
+        return self.__empty_tile_name + "[" + "".join(str(e) for e in self.state_map) + "]"
 
     def __hash__(self):
         return "".join(str(hex(e)) for e in self.state_map)
