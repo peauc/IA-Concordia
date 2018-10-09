@@ -1,11 +1,15 @@
 import src.core as core
-import src.Algorithm.BreadthFirst as BF
+from src.Algorithm.BreadthFirst import BreathFirst
 
-def breathFirst():
-    algo = BF()
+
+def initBF():
+    algo = BreathFirst()
+    if not algo.is_resolved():
+        print("initiated correctly")
+
 
 def main():
-    breathFirst()
+    initBF()
 
 
 if __name__ == "__main__":

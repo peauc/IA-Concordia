@@ -11,5 +11,6 @@ def _mapSetup() -> list:
 
 def loop(algo, heuristic):
     board = _mapSetup()
-
+    while not algo.is_resolved():
+        print("New computing action from the algorithm")
     pass
