@@ -35,6 +35,9 @@ class Node:
     def __str__(self) -> str:
         return self.__empty_tile_name + " [" + ", ".join(str(e) for e in self.state_map) + "]"
 
+    def __hash__(self):
+        return "".join(str(e) for e in self.state_map)
+
     def __eq__(self, o: object) -> bool:
         if isinstance(o, self.__class__):
             return o.state_map == self.state_map

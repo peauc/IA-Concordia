@@ -17,4 +17,4 @@ class IAlgorythm:
     def __init__(self, initial_board_state : list):
         self._current_node = None
         self._open_list = [] + [Node(initial_board_state, initial_board_state.index(0), None, None)]
-        self._closed_list = []
+        self._closed_list = {}
