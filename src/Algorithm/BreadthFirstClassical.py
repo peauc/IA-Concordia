@@ -8,7 +8,7 @@ class BreadthFirstClassical(IAlgorythm):
         super().__init__(initial_board_state, heuristic)
         self._file_name = "BreadthFirst.txt"
 
-    def compute(self, board):
+    def compute(self):
         while not self.is_resolved():
             if self._open_list.__len__() == 0:
                 raise Exception("The algorithm couldn't find the solution")

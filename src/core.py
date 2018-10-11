@@ -1,5 +1,4 @@
 from src.Algorithm.IAlgorythm import IAlgorythm
-from src.Heuristic.IHeuristics import IHeuristics
 
 
 def _print(filename, array):
@@ -8,13 +7,13 @@ def _print(filename, array):
             f.write("%s\n" % item)
 
 
-def loop(algo: IAlgorythm, board_state: list):
+def logic(algo: IAlgorythm):
     while not algo.is_resolved():
         try:
-            algo.compute(board_state)
+            algo.compute()
         except (Exception, KeyboardInterrupt) as e:
-            print(e.args)
-            print(algo.get_debug_infos(), sep='')
+            print(e)
+            print(*algo.get_debug_infos(), sep='')
             exit(1)
         """ Todo: Write to a file """
         print("New computing action from the algorithm")

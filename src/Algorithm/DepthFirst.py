@@ -8,7 +8,7 @@ class DepthFirst(IAlgorythm):
 
     _current_node: Node
 
-    def compute(self, board):
+    def compute(self):
         while not self.is_resolved():
             if self._open_list.__len__() == 0:
                 raise Exception("The algorithm couldn't find the solution")
@@ -17,7 +17,7 @@ class DepthFirst(IAlgorythm):
             self._closed_list[self._current_node.__hash__()] = self._current_node
 
             """ TODO: Iterative depth first """
-            if self._current_node.depth >= 50:
+            if self._current_node.depth >= 20:
                 continue
             else:
                 next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)

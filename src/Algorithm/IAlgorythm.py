@@ -17,7 +17,7 @@ class IAlgorythm:
 
     """ this method takes a board and its heuristic and compute the best move, then return the actual map state"""
     @abc.abstractmethod
-    def compute(self, board):
+    def compute(self):
         pass
 
     """ get the output filename """
