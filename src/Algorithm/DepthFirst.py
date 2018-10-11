@@ -2,21 +2,23 @@ from src.Algorithm.IAlgorythm import IAlgorythm
 from src.moves import get_children_nodes
 from src.moves import is_goal
 from src.node import Node
+from src.Heuristic.IHeuristics import IHeuristics
 
 
 class DepthFirst(IAlgorythm):
 
     _current_node: Node
 
-    def compute(self, board, heuristic):
+    def compute(self, board):
         while not self.is_resolved():
             if self._open_list.__len__() == 0:
-                raise Exception("OpenList was empty")
+                raise Exception("The algorithm couldn't find the solution")
 
             self._current_node = self._open_list.pop(0)
             self._closed_list[self._current_node.__hash__()] = self._current_node
 
-            if self._current_node.depth >= 10:
+            """ TODO: Iterative depth first """
+            if self._current_node.depth >= 50:
                 continue
             else:
                 next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)
@@ -30,6 +32,7 @@ class DepthFirst(IAlgorythm):
         print("closed_list: ", self._closed_list.__len__())
         print("current_node: ", self._current_node)
 
-    def __init__(self, initial_board_state: list):
-        super(DepthFirst, self).__init__(initial_board_state)
-        pass
+    def __init__(self, initial_board_state: list, heuristic: IHeuristics):
+        super(DepthFirst, self).__init__(initial_board_state, heuristic)
+        self._file_name = "puzzleDFS.txt"
+
