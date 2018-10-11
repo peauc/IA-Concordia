@@ -1,6 +1,5 @@
 from src.Algorithm.IAlgorythm import IAlgorythm
 from src.moves import get_children_nodes
-from src.moves import is_goal
 from src.node import Node
 from src.Heuristic.IHeuristics import IHeuristics
 
