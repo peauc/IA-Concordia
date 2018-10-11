@@ -8,4 +8,4 @@ def loop(algo: IAlgorythm, heuristic: IHeuristics, board_state: list):
         board_state = algo.compute(board_state, current_heuristic)
         """ Todo: Write to a file """
         print("New computing action from the algorithm")
-    pass
+    algo.display_winning_path()
