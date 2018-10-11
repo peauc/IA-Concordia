@@ -12,7 +12,7 @@ def loop(algo: IAlgorythm, board_state: list):
     while not algo.is_resolved():
         try:
             algo.compute(board_state)
-        except Exception as e:
+        except (Exception, KeyboardInterrupt) as e:
             print(e.args)
             print(algo.get_debug_infos(), sep='')
             exit(1)
