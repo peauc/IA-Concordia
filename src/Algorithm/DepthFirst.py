@@ -13,13 +13,10 @@ class DepthFirst(IAlgorythm):
             if self._open_list.__len__() == 0:
                 raise Exception("OpenList was empty")
 
-            if self._closed_list.__len__() % 100 == 0:
-                print(self._closed_list.__len__())
-
             self._current_node = self._open_list.pop(0)
             self._closed_list[self._current_node.__hash__()] = self._current_node
 
-            if self._current_node.depth >= 5:
+            if self._current_node.depth >= 50:
                 continue
             else:
                 next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)
@@ -27,12 +24,6 @@ class DepthFirst(IAlgorythm):
                     if x.__hash__() in self._closed_list:
                         next_moves.remove(x)
                 self._open_list = next_moves + self._open_list
-        node = self._current_node
-        print(node.state_map)
-        while node.depth != 0:
-            node = node.parent_node
-            print(node.state_map)
-
 
     def __str__(self):
         print("open_list: ", self._open_list.__len__())
