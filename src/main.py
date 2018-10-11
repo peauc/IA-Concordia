@@ -13,19 +13,12 @@ def _mapSetup() -> list:
     return board
 
 
-def _print(filename, array):
-    with open(filename, 'w') as f:
-        for item in array:
-            f.write("%s\n" % item)
-
-
 def init_dfs():
     board = _mapSetup()
     algo = DepthFirst(board)
     heuristic = NoHeuristic()
     core.loop(algo, heuristic, board)
-    winning_path = algo.get_winning_path()
-    _print(algo.get_file_name(), winning_path)
+
 
 def init_bf():
     board = _mapSetup()
