@@ -5,5 +5,5 @@ class NoHeuristic(IHeuristics):
     def __init__(self):
         pass
 
-    def compute(self, board) -> list:
-        return []
+    def compute(self, board) -> int:
+        return 1

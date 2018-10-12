@@ -15,7 +15,8 @@ class BreadthFirst(IAlgorythm):
                 print("Found goal state ! =>", current_node.__str__())
                 return current_node.state_map
 
-            for child in reversed(get_children_nodes(current_node, self.__closed_list, self.__open_list)):
+            children_nodes = get_children_nodes(current_node, self.__closed_list, self.__open_list)
+            for child in reversed(children_nodes):
 
                 if child in self.__closed_list:
                     continue
@@ -29,10 +30,10 @@ class BreadthFirst(IAlgorythm):
             # next_moves = get_children_nodes(current_node, closed_list, open_list)
             # open_list = next_moves + open_list
             # current_node = open_list.pop(0)
-            print("open_list: ", list(map(lambda x: x.__str__(), self.__open_list)), "\n")
-            print("closed_list: ", list(map(lambda x: x.__str__(), self.__closed_list)), "\n")
+            # print("open_list: ", list(map(lambda x: x.__str__(), self.__open_list)), "\n")
+            # print("closed_list: ", list(map(lambda x: x.__str__(), self.__closed_list)), "\n")
             print("current_node: ", current_node, "\n")
-            input()
+            # input()
 
     def __init__(self, board):
         self.__open_list = [Node(board, board.index(0), None, None)]
