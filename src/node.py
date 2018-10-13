@@ -31,6 +31,7 @@ class Node:
         self.depth = 0
         if type(parent) is Node:
             self.depth = parent.depth + 1
+        self.heuristic_value = None
 
     def __str__(self) -> str:
         return self.__empty_tile_name + " [" + ", ".join(str(e) for e in self.state_map) + "]"

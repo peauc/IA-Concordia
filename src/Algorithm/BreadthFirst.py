@@ -1,41 +1,23 @@
 from src.Algorithm.IAlgorythm import IAlgorythm
 from src.moves import get_children_nodes
-from src.moves import is_goal
-from src.node import Node
+from src.Heuristic.IHeuristics import IHeuristics
 
 
 class BreadthFirst(IAlgorythm):
+    def __init__(self, initial_board_state: list, heuristic: IHeuristics):
+        super().__init__(initial_board_state, heuristic)
+        self._file_name = "BreadthFirst.txt"
 
-    def compute(self, board, heuristics) -> list:
+    def compute(self):
+        while not self.is_resolved():
+            if self._open_list.__len__() == 0:
+                raise Exception("The algorithm couldn't find the solution")
 
-        while self.__open_list:
+            self._current_node = self._open_list.pop(0)
+            self._closed_list[self._current_node.__hash__()] = self._current_node
 
-            current_node = self.__open_list.pop(0)
-            if is_goal(current_node.state_map):
-                print("Found goal state ! =>", current_node.__str__())
-                return current_node.state_map
-
-            children_nodes = get_children_nodes(current_node, self.__closed_list, self.__open_list)
-            for child in reversed(children_nodes):
-
-                if child in self.__closed_list:
-                    continue
-
-                if child not in self.__open_list:
-                    self.__open_list = [child] + self.__open_list
-
-            self.__closed_list.append(current_node)
-
-            # closed_list.append(current_node)
-            # next_moves = get_children_nodes(current_node, closed_list, open_list)
-            # open_list = next_moves + open_list
-            # current_node = open_list.pop(0)
-            # print("open_list: ", list(map(lambda x: x.__str__(), self.__open_list)), "\n")
-            # print("closed_list: ", list(map(lambda x: x.__str__(), self.__closed_list)), "\n")
-            print("current_node: ", current_node, "\n")
-            # input()
-
-    def __init__(self, board):
-        self.__open_list = [Node(board, board.index(0), None, None)]
-        self.__closed_list = []
-        pass
+            next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)
+            for x in list(next_moves):
+                if x.__hash__() in self._closed_list:
+                        next_moves.remove(x)
+            self._open_list += next_moves

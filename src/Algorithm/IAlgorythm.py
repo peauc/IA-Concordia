@@ -3,6 +3,7 @@ from src.node import Node
 from src.Heuristic.IHeuristics import IHeuristics
 import src.moves as moves
 
+
 class IAlgorythm:
     _heuristic: IHeuristics
     _current_node: Node

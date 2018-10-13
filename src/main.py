@@ -1,12 +1,13 @@
 import random
 import src.core as core
+from src.Algorithm.AStar import AStar
 from src.Algorithm.BestFirst import BestFirst
 from src.Algorithm.DepthFirst import DepthFirst
 from src.Algorithm.BreadthFirst import BreadthFirst
-from src.Algorithm.BreadthFirstClassical import BreadthFirstClassical
 from src.Heuristic.DistanceHeuristic import DistanceHeuristic
 from src.Heuristic.NoHeuristic import NoHeuristic
 from src.Algorithm.IAlgorythm import IAlgorythm
+from src.Heuristic.MisplaceHeuristic import MisplaceHeuristic
 
 ConcordiaExample = [1, 0, 3, 7, 5, 2, 6, 4, 9, 10, 11, 8]
 
@@ -19,17 +20,17 @@ def _map_setup() -> list:
 
 
 def init_breadth_first(board: list) -> IAlgorythm:
-    algo = BreadthFirstClassical(board, NoHeuristic())
+    algo = BreadthFirst(board, NoHeuristic())
+    return algo
+
+
+def init_astar(board: list) -> IAlgorythm:
+    algo = AStar(board, DistanceHeuristic())
     return algo
 
 
 def init_dfs(board) -> IAlgorythm:
     algo = DepthFirst(board, NoHeuristic())
-    return algo
-
-
-def init_bf(board) -> IAlgorythm:
-    algo = BreadthFirst(board)
     return algo
 
 
@@ -42,7 +43,8 @@ def __main__() -> int:
     algo_list = [
             #init_breadth_first(board=_map_setup()),
             #init_dfs(board=_map_setup()),
-            init_bfs(board=_map_setup()),
+            #init_bfs(board=_map_setup()),
+            init_astar(board=_map_setup())
         ]
 
     """ Will fire every algorithm enqueued """
