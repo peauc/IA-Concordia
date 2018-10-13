@@ -14,7 +14,7 @@ def logic(algo: IAlgorythm):
         except (Exception, KeyboardInterrupt) as e:
             print(e)
             print(*algo.get_debug_infos(), sep='')
-            exit(1)
+            return
         """ Todo: Write to a file """
         print("New computing action from the algorithm")
     algo.display_winning_path()

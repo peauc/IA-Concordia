@@ -17,7 +17,7 @@ class DepthFirst(IAlgorythm):
             self._closed_list[self._current_node.__hash__()] = self._current_node
 
             """ TODO: Iterative depth first """
-            if self._current_node.depth >= 20:
+            if self._current_node.depth >= 5:
                 continue
             else:
                 next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)

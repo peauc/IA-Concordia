@@ -16,7 +16,7 @@ def _map_setup() -> list:
 
 
 def init_breadth_first(board: list) -> IAlgorythm:
-    algo = BreadthFirstClassical(ConcordiaExemple, NoHeuristic())
+    algo = BreadthFirstClassical(board, NoHeuristic())
     return algo
 
 
@@ -32,8 +32,8 @@ def init_bf(board) -> IAlgorythm:
 
 def __main__() -> int:
     algo_list = [
-            init_breadth_first(board=_map_setup()),
-            init_dfs(board=_map_setup()),
+            init_dfs(board=ConcordiaExemple),
+            init_breadth_first(board=ConcordiaExemple)
         ]
 
     """ Will fire every algorithm enqueued """
