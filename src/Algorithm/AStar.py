@@ -20,6 +20,6 @@ class AStar(IAlgorythm):
             self._current_node = self._open_list.pop(0)
             self._closed_list[self._current_node.__hash__()] = self._current_node
 
-            next_moves = get_children_nodes(self._current_node, self._closed_list, self._open_list)
+            next_moves = get_children_nodes(self._current_node)
             self._open_list = next_moves + self._open_list
             self._open_list.sort(key=lambda element: (self._calculate_cost(element)))

@@ -7,6 +7,7 @@ from src.Algorithm.BreadthFirst import BreadthFirst
 from src.Heuristic.DistanceHeuristic import DistanceHeuristic
 from src.Heuristic.NoHeuristic import NoHeuristic
 from src.Algorithm.IAlgorythm import IAlgorythm
+from src.Algorithm.IterativeDepthFirst import IterativeDepthFirst
 from src.Heuristic.MisplaceHeuristic import MisplaceHeuristic
 
 ConcordiaExample = [1, 0, 3, 7, 5, 2, 6, 4, 9, 10, 11, 8]
@@ -34,6 +35,11 @@ def init_dfs(board) -> IAlgorythm:
     return algo
 
 
+def init_idfs(board) -> IAlgorythm:
+    algo = IterativeDepthFirst(board, NoHeuristic())
+    return algo
+
+
 def init_bfs(board) -> IAlgorythm:
     algo = BestFirst(board, DistanceHeuristic())
     return algo
@@ -43,8 +49,9 @@ def __main__() -> int:
     algo_list = [
             #init_breadth_first(board=_map_setup()),
             #init_dfs(board=_map_setup()),
+            init_idfs(board=_map_setup())
             #init_bfs(board=_map_setup()),
-            init_astar(board=_map_setup())
+            #init_astar(board=_map_setup())
         ]
 
     """ Will fire every algorithm enqueued """

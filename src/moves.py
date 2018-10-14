@@ -65,7 +65,7 @@ def is_goal(state: list) -> bool:
     return state == GOAL_STATE
 
 
-def get_children_nodes(node: Node, closed_list: list, open_list: list) -> list:
+def get_children_nodes(node: Node) -> list:
     """Returns a list of the children nodes of the given node, in order of preference."""
 
     possible_moves = []
