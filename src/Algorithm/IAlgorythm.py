@@ -21,6 +21,9 @@ class IAlgorythm:
     def compute(self):
         pass
 
+    def set_file_name(self, new_file_name):
+        self._file_name = new_file_name
+
     """ get the output filename """
     def get_file_name(self):
         return self._file_name

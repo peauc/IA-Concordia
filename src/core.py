@@ -16,7 +16,7 @@ def logic(algo: IAlgorythm):
             print(*algo.get_debug_infos(), sep='')
             return
         """ Todo: Write to a file """
-        print("New computing action from the algorithm")
+    print("New computing action from the algorithm")
     algo.display_winning_path()
     print(*algo.get_debug_infos(), sep='')
     winning_path = algo.get_winning_path()

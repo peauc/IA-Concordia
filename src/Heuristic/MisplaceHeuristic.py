@@ -16,6 +16,6 @@ class MisplaceHeuristic(IHeuristics):
         for index, tile in enumerate(board):
             goal_index = GOAL_STATE.index(tile)
             if goal_index != index:
-                goal_index += 1
+                total_node_score += 1
 
         return total_node_score

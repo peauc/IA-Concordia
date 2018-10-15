@@ -9,8 +9,8 @@ class AStar(IAlgorythm):
         super().__init__(initial_board_state, heuristic)
 
     def _calculate_cost(self, node: Node):
-        h = self._heuristic.compute(node.state_map)
-        return h + node.depth
+        node.heuristic_value = self._heuristic.compute(node.state_map)
+        return node.heuristic_value + node.depth
 
     def compute(self):
         while not self.is_resolved():
@@ -23,3 +23,4 @@ class AStar(IAlgorythm):
             next_moves = get_children_nodes(self._current_node)
             self._open_list = next_moves + self._open_list
             self._open_list.sort(key=lambda element: (self._calculate_cost(element)))
+            i = 0;
