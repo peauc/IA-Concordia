@@ -23,4 +23,3 @@ class AStar(IAlgorythm):
             next_moves = get_children_nodes(self._current_node)
             self._open_list = next_moves + self._open_list
             self._open_list.sort(key=lambda element: (self._calculate_cost(element)))
-            i = 0;
