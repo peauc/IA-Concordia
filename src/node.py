@@ -31,6 +31,8 @@ class Node:
         self.depth = 0
         if type(parent) is Node:
             self.depth = parent.depth + 1
+        if self.depth == 0:
+            self.__empty_tile_name = '0'
         self.heuristic_value = None
 
     def __str__(self) -> str:
