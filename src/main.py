@@ -72,7 +72,7 @@ def __main__() -> int:
     print("If you want to cancel a running algorithm, press ctrl + c it will fire the next one automatically ")
     algo_list = [
             init_dfs(board=user_input, heuristics=NoHeuristic(), file_name="puzzleDFS.txt"),
-            init_idfs(board=user_input, heuristics=NoHeuristic(), file_name="puzzleIDFS.txt"),
+            #init_idfs(board=user_input, heuristics=NoHeuristic(), file_name="puzzleIDFS.txt"),
             init_bfs(board=user_input, heuristics=MisplaceHeuristic(), file_name="puzzleBFS-h1.txt"),
             init_bfs(board=user_input, heuristics=DistanceHeuristic(), file_name="puzzleBFS-h2.txt"),
             init_astar(board=user_input, heuristics=MisplaceHeuristic(), file_name="puzzleAs-h1.txt"),
